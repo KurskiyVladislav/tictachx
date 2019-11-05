@@ -14,7 +14,6 @@ class CalculateWinner
     ];
     public static function calculateWinner(squares:Array<String>):String
     {
-        trace("Calculate Winner");
     for (i in 0...(winnerLines.length))
     {
         var firstSquare:Int = winnerLines[i][0];

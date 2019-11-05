@@ -26,7 +26,6 @@ class Board extends ReactComponent {
         this.state.squares[ai.makeMove()] = "X";
         }
     }
-    //--------------*Game elements*---------
     function Square(props)
     {
         return jsx('
@@ -50,7 +49,6 @@ class Board extends ReactComponent {
         {
             return;
         }
-        trace("Set x");
         squares_[i] = playerMark;
         var ai = new AI(squares_, aiMark);
         squares_[ai.makeMove()] = aiMark;
@@ -77,7 +75,6 @@ class Board extends ReactComponent {
         if(winner!=null && winner != 'draw')
         {
             status= "The winner is " + winner;
-            //return jsx('<div/>'); 
         }
         else if(winner == 'draw')
         {
@@ -88,7 +85,6 @@ class Board extends ReactComponent {
             
             status = 'Next player: ' + (this.state.xIsNext ? "X" : "O");
         }
-        //trace("Debug");
         return jsx("
         <div>
             <div>

@@ -1,6 +1,5 @@
 package tictac.logic;
 
-import js.lib.Int16Array;
 import haxe.ds.List;
 
 class AI
@@ -19,26 +18,9 @@ class AI
     }
     public function makeMove():Int
     {
-        var result:Int = minimax(3, this.aiSeed)[0];//_minimax(10,this.aiSeed);
+        var result:Int = minimax(3, this.aiSeed)[0];
         return result;
     }
-    /*private function minimax(playerSeed:String):Int
-    {
-        var move = -1;
-        var score = -1;
-        var nextMoves:haxe.ds.List<Int> = generateMoves();
-        for (i in nextMoves)
-        {
-            localBoard[i] = playerSeed;
-            var scoreForTheMove = -minimax(playerSeed==aiSeed?oppSeed:aiSeed);
-            if (scoreForTheMove > score)
-            {
-                score = scoreForTheMove;
-                move = i;
-            }
-        }
-        return 0;
-    }*/
     private function minimax(depth:Int, playerSeed:String):Array<Int>
     {
         var nextMoves:haxe.ds.List<Int> = generateMoves();
@@ -51,15 +33,11 @@ class AI
         }
         else
         {
-            //var _move:Int = 0;
             for (move in nextMoves){
-            //move = move;
                 localBoard[move] = playerSeed;
                 if(playerSeed == aiSeed)
                 {
-                    currentScore = minimax(depth-1, oppSeed)[1];
-                    trace("Current score ai " + currentScore);
-                    
+                    currentScore = minimax(depth-1, oppSeed)[1];        
                     if (currentScore>bestScore)
                     {
                         bestScore = currentScore;
@@ -69,7 +47,6 @@ class AI
                 else 
                     {
                         currentScore = minimax(depth-1, aiSeed)[1];
-                        trace("Current score opp" + currentScore);
                         if (currentScore < bestScore)
                         {
                             bestScore = currentScore;
@@ -77,7 +54,6 @@ class AI
                         }
                     }
                 localBoard[move] = null;
-                trace(bestMove, bestScore);
             }
         }
         return [bestMove, bestScore];
